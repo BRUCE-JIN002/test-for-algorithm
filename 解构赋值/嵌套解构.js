@@ -36,3 +36,22 @@ console.log(title);
  * 最终，我们得到了 width、height、item1、item2 和具有默认值的 title 变量。
  * 注意，size 和 items 没有对应的变量，因为我们取的是它们的内容。
  */
+
+//对象解构
+
+const school = {
+    classes: {
+        stu: {
+            name: "Bob",
+            age: 24,
+        },
+    },
+};
+
+//深度嵌套的对象解构
+const {
+    classes: {
+        stu: { name: name1 },
+    },
+} = school;
+console.log(name1);

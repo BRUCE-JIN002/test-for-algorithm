@@ -17,11 +17,21 @@ console.log(typeof objNum1.valueOf()); //123
 
 /**
  * js primitive(input, type) input:传入的值， type： 类型值
- * input 判断是不是原始类型的值： 是 ， 直接返回
+ * input 判断是不是原始类型的值： 是， 直接返回
  * 不是： input.valueOf(): 是原始值，直接返回
  * 还不是：input.toString(): string是 原始类型，返回
- * 报错
+ * 否则报错
  *
  * valueOf(): input 原始类型的值： 有，返回， 没有， 返回对象本身
  * toString(): input 字符串转换， 对象：[object type] type: 对象类型
  */
+
+//面试题
+console.log([] + []); //""输出空字符串
+console.log([].valueOf()); //[]
+console.log([].toString()); //""
+console.log([] + []); //"" + "" = "" 空字符串
+
+console.log([] + {}); //[object Object]
+console.log([]); //"" ，空字符串
+console.log({}.toString()); //[object Object]

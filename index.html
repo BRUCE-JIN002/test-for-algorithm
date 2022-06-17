@@ -6,14 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script>
+        var length = 10;
+
+        function fn() {
+            return this.length + 1;
+        }
+
+        var obj = {
+            length: 5,
+            test1: function() {
+                return fn();
+            },
+        };
+
+        obj.test2 = fn;
+        console.log(obj.test1()); //NaN
+        console.log(fn(), obj.test2()); //11 6
+        console.log(fn() === obj.test2()); //false
+        console.log(obj.test1(), obj.test2()); //11 6
+        console.log(obj.test1() == obj.test2()); //false
+        console.log(Array.prototype);
+    </script>
 </head>
 
-<body>
-    <div>
-        <div id="div1">div1</div>
-        <div id="div2">div2</div>
-    </div>
-    <script></script>
-</body>
+<body></body>
 
 </html>
