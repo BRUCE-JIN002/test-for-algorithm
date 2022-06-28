@@ -5,12 +5,12 @@
  * 认为闭包是由函数和其相关引用环境组合而成的， 实现信息驻留(信息的保持，引用在，空间不销毁)。
  */
 
-简单的闭包;
-var Person = function() {
-    var count = 0; //私有变量
-    return function getCount() {
-        console.log(count++);
-    };
+// 简单的闭包;
+var Person = function () {
+	var count = 0; //私有变量
+	return function getCount() {
+		console.log(count++);
+	};
 };
 
 var p = Person();
@@ -22,12 +22,12 @@ p(); //2
 var buttons = [{ name: "b1" }, { name: "b2" }, { name: "b2" }];
 
 function bind() {
-    for (var i = 0; i < buttons.length; i++) {
-        //解决方法1：var换成let 就是0, 1, 2
-        buttons[i].fun = function() {
-            alert(i);
-        };
-    }
+	for (var i = 0; i < buttons.length; i++) {
+		//解决方法1：var换成let 就是0, 1, 2
+		buttons[i].fun = function () {
+			alert(i);
+		};
+	}
 }
 
 bind();
@@ -36,23 +36,23 @@ buttons[1].fun(); //3
 buttons[2].fun(); //3
 
 //解决方法2：立即执行函数
-(function(num) {
-    buttons[i].onclick = function() {
-        alert(num);
-    };
+(function (num) {
+	buttons[i].onclick = function () {
+		alert(num);
+	};
 })(i);
 //这个是把i当做全局变量传入给num, 保存了当前这个局部变量形成闭包
 var buttons = [{ name: "b1" }, { name: "b2" }, { name: "b2" }];
 
 function bind() {
-    for (var i = 0; i < buttons.length; i++) {
-        //立即执行函数
-        (function(num) {
-            buttons[i].onclick = function() {
-                alert(num);
-            };
-        })(i);
-    }
+	for (var i = 0; i < buttons.length; i++) {
+		//立即执行函数
+		(function (num) {
+			buttons[i].onclick = function () {
+				alert(num);
+			};
+		})(i);
+	}
 }
 
 bind();

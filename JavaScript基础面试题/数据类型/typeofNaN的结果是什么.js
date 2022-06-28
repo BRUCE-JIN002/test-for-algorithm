@@ -24,5 +24,5 @@ console.log(isNaN("123")); //false
  * 函数 Number.isNaN 会首先判断传入参数是否为数字，
  * 如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确
  */
-console.log(Number.isNaN("123")); //false
+console.log(Number.isNaN("a")); //false
 console.log(Number.isNaN(123)); //false

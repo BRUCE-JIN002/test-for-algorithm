@@ -17,39 +17,39 @@
 //如果需要遍历的对象是类数组对象，用Array.from转成数组即可:
 
 var obj = {
-    name: "Jack",
-    age: 23,
-    email: "123@163.com",
+	name: "Jack",
+	age: 23,
+	email: "123@163.com",
 };
 
-newobj = Array.from(obj);
-console.log(newobj);
+newObj = Array.from(obj);
+console.log(newObj);
 
-for (var k of newobj) {
-    console.log(k);
+for (var k of newObj) {
+	console.log(k);
 }
 
 //如果不是类数组对象，就给对象添加一个[Symbol.iterator]属性，并指向一个迭代器即可
-var obj1 = {
-    0: "0",
-    1: "1",
-    2: "2",
-};
+// var obj1 = {
+// 	0: "0",
+// 	1: "1",
+// 	2: "2",
+// };
 
-obj1[Symbol.iterator] = function() {
-    var keys = Object.keys(this);
-    var count = 0;
-    return {
-        next() {
-            if (count < keys.length) {
-                return { value: obj1[keys[count++]], done: false };
-            } else {
-                return { value: undefined, done: true };
-            }
-        },
-    };
-};
+// obj1[Symbol.iterator] = function () {
+// 	var keys = Object.keys(this);
+// 	var count = 0;
+// 	return {
+// 		next() {
+// 			if (count < keys.length) {
+// 				return { value: obj1[keys[count++]], done: false };
+// 			} else {
+// 				return { value: undefined, done: true };
+// 			}
+// 		},
+// 	};
+// };
 
-for (var k of obj1) {
-    console.log(k);
-}
+// for (var k of obj1) {
+// 	console.log(k);
+// }

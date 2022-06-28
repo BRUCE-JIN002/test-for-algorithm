@@ -14,47 +14,47 @@
  */
 
 function A() {
-    let a = 1;
-    return () => {
-        console.log(a);
-    };
+	let a = 1;
+	return () => {
+		console.log(a);
+	};
 }
 const func = A();
 func();
 
-//闭包存在的意义就是让我们可以间接访问函数内部的变量。
-//经典面试题：循环中使用闭包解决var定义时函数的问题
+// 闭包存在的意义就是让我们可以间接访问函数内部的变量。
+// 经典面试题：循环中使用闭包解决var定义时函数的问题
 for (var i = 0; i < 5; i++) {
-    setTimeout(function timer() {
-        console.log(i);
-    }, i * 1000);
+	setTimeout(function timer() {
+		console.log(i);
+	}, i * 1000);
 }
 //首先因为 setTimeout 是个异步函数，
 //所以会先把循环全部执行完毕，这时候 i 就是 6 了，所以会输出一堆 6。解决办法有三种:
 //1. 使用闭包的方式
 
 for (var i = 1; i <= 5; i++) {
-    (function(j) {
-        setTimeout(function timer() {
-            console.log(j);
-        }, j * 1000);
-    })(i);
+	(function (j) {
+		setTimeout(function timer() {
+			console.log(j);
+		}, j * 1000);
+	})(i);
 }
 
 //2.使用let关键字
 for (let i = 0; i < 5; i++) {
-    setTimeout(function timer() {
-        console.log(i);
-    }, i * 1000);
+	setTimeout(function timer() {
+		console.log(i);
+	}, i * 1000);
 }
 
-//3.使用 setTimeout 的第三个参数，这个参数会被当成 timer 函数的参数传入
+// //3.使用 setTimeout 的第三个参数，这个参数会被当成 timer 函数的参数传入
 for (var i = 0; i < 5; i++) {
-    setTimeout(
-        function timer(j) {
-            console.log(j);
-        },
-        i * 1000,
-        i
-    );
+	setTimeout(
+		function timer(j) {
+			console.log(j);
+		},
+		i * 1000,
+		i
+	);
 }

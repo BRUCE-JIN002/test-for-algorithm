@@ -14,7 +14,7 @@ console.log(res);
  */
 
 function numberEpsilon(arg1, arg2) {
-    return Math.abs(arg1 - arg2) < Number.EPSILON;
+	return Math.abs(arg1 - arg2) < Number.EPSILON;
 }
 
 console.log(numberEpsilon(0.1 + 0.2, 0.3));

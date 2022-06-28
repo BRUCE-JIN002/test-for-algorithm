@@ -7,29 +7,32 @@
  * args: 这个是数组， 它将作为参数传给Function。
  */
 
-//call, applyde区别：
+//call, apply的区别：
 //call: 单个的参数传入
 //apply: 以数组的形式传入
 var stu1 = {
-    name: "Jack",
-    age: 18,
-    say: function(school, grade) {
-        console.log(this.name + "今年" + school + "大学" + grade + "年级");
-    },
+	name: "Jack",
+	age: 18,
+	say: function (school, grade) {
+		console.log(this.name + "今年" + school + "大学" + grade + "年级");
+	},
 };
 
 stu1.say("北京", "二");
 
 var stu2 = {
-    name: "Tom",
+	name: "Tom",
 };
 
 stu1.say.call(stu2, "清华", "四");
 stu1.say.apply(stu2, ["清华", "三"]);
+const q = stu1.say.bind(stu2);
+q("清华", "四");
 
 //应用： 类数组转换为数组
-var arr = Array.prototype.slice.apply(arguements); //arguements为类数组
+var arr = Array.prototype.slice.apply(arguments); //arguments为类数组
 
 //bind: 类似于call, 但是与其不同的是，call方法调用可以立即执行，
 //但是bind需要用一个变量接受之后才能执行
-var val = stu1.say.bind(this);
+var val = stu1.say.bind(stu2);
+val();

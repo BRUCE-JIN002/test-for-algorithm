@@ -41,12 +41,12 @@
       this.name = name;
       this.age = age;
       this.say: function() {
-        onsole.log("我是" + this.name);
+        console.log("我是" + this.name);
       }
     }
     1. 当函数创建的时候就会携带上一个prototype的属性， 这个属性指向prototype对象，也就是原型对象
       Person.prototype.money = 20;
-      Person.prototype.run = functoin() {
+      Person.prototype.run = function() {
         console.log("跑步");
       }
       //constructor: Person.prototype 携带
@@ -54,7 +54,7 @@
 
       var p1 = new Person("张三"， 18);  //实例化p1.__proto__
       //p1.__proto__: js对象都会携带
-      console.log(p1.monney);
+      console.log(p1.money);
       p1.__proto__ === Person.prototype
     挂载在函数内部的方法， 实例化对象内部会复制够按照偶函数方法
     挂载在原型上的方法， 不会取复制

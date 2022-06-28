@@ -3,8 +3,8 @@
  */
 
 function Person(name, age) {
-    this.name = name;
-    this.age = age;
+	this.name = name;
+	this.age = age;
 }
 
 var p = new Person("Jack", 23); //实例化

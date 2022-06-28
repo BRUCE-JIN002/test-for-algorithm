@@ -27,8 +27,9 @@ console.log(g); //"efg"
 //看看如下代码会打印出什么
 var a1 = new Boolean(false);
 if (!a1) {
-    console.log("Oops");
+	console.log("Oops");
 }
 
 //什么也不会打出来, 因为虽然包裹的基本类型是false，
 //但是false被包裹成包装类型后就成了对象，所以其非值为false，所以循环体中的内容不会运行
+console.log(!a1); //false

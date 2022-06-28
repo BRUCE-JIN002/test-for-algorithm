@@ -52,3 +52,6 @@ console.log(a > 2); //false
  * Number(a.toString()) // NaN，根据上面 < 和 > 操作符的规则，要转换成数字
  * NaN > 2 //false，得出比较结果
  */
+console.log(NaN > 2);
+console.log(NaN < 2);
+console.log(NaN !== 2);

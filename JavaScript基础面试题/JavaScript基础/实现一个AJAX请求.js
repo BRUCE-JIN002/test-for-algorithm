@@ -3,7 +3,7 @@
  * 1. 创建一个 XMLHttpRequest 对象。
  *
  * 2.在这个对象上使用 open 方法创建一个 HTTP 请求，
- * open 方法所需要的参数是请求的方法、请求的地址、是否异步和用户的认证信息。
+ * open 方法所需要的参数是：请求的方法、请求的地址、是否异步和用户的认证信息。
  *
  * 3.在发起请求前，可以为这个对象添加一些信息和监听函数。
  * 比如说可以通过 setRequestHeader 方法来为请求添加头信息。
@@ -24,19 +24,19 @@ let xhr = new XMLHttpRequest();
 //创建 http请求
 xhr.open("GET", url, true);
 //设置状态监听函数
-xhr.onreadystatechange = function() {
-    if (this.readyState !== 4) return;
-    //请求成功时
-    if (this.status === 200) {
-        FileSystemHandle(this.response);
-    } else {
-        console.error(this.statusText);
-    }
+xhr.onreadystatechange = function () {
+	if (this.readyState !== 4) return;
+	//请求成功时
+	if (this.status === 200) {
+		FileSystemHandle(this.response);
+	} else {
+		console.error(this.statusText);
+	}
 };
 
 //设置请求失败时的监听函数
-xhr.onerror = function() {
-    console.error(this.statusText);
+xhr.onerror = function () {
+	console.error(this.statusText);
 };
 //设置请求头信息
 xhr.responseType = "json";
@@ -46,31 +46,31 @@ xhr.send(null);
 
 //使用Promise封装AJAX
 function getJson(url) {
-    //创建一个promise对象
-    let promise = new Promise(function(resovle, reject) {
-        let xhr = new XMLHttpRequest();
-        //新建一个http请求
-        xhr.open("GET", url, true);
-        //设置状态的箭听函数
-        xhr.onreadystatechange = function() {
-            if (this.readyState !== 4) return;
-            //请求成功或失败时改变promise的状态
-            if (this.status === 200) {
-                resovle(this.response);
-            } else {
-                reject(new Error(this.statusText));
-            }
-        };
-        //设置错误监听函数
-        xhr.onerror = function() {
-            reject(new Error(this.statusText));
-        };
-        //设置相应的数据类型
-        xhr.responseType = "json";
-        //设置请求头信息
-        xhr.setRequestHeader("Accept", "application/json");
-        //发送http请求
-        xhr.send(null);
-    });
-    return promise;
+	//创建一个promise对象
+	let promise = new Promise(function (resolve, reject) {
+		let xhr = new XMLHttpRequest();
+		//新建一个http请求
+		xhr.open("GET", url, true);
+		//设置状态的箭听函数
+		xhr.onreadystatechange = function () {
+			if (this.readyState !== 4) return;
+			//请求成功或失败时改变promise的状态
+			if (this.status === 200) {
+				resolve(this.response);
+			} else {
+				reject(new Error(this.statusText));
+			}
+		};
+		//设置错误监听函数
+		xhr.onerror = function () {
+			reject(new Error(this.statusText));
+		};
+		//设置相应的数据类型
+		xhr.responseType = "json";
+		//设置请求头信息
+		xhr.setRequestHeader("Accept", "application/json");
+		//发送http请求
+		xhr.send(null);
+	});
+	return promise;
 }

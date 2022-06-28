@@ -2,7 +2,7 @@
  * history:
  * window.history属性指向 History对象， 它表示当前窗口的浏览历史， 是一个栈结构
  * //History.back(), History.forward(), History.go()
- * // History.pushState(), History.repalce();
+ * // History.pushState(), History.replace();
  */
 
 /**

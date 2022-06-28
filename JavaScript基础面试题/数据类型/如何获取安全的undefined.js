@@ -5,7 +5,7 @@
  */
 
 function voidFun() {
-    return void 0;
+	return void 0;
 }
 
 console.log(voidFun()); //undefined

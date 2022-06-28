@@ -16,25 +16,25 @@ Array.prototype.splice.call(arrayLike, 0);
 //3. 通过 apply 调用数组的 concat 方法来实现转换
 Array.prototype.concat.apply([], arrayLike);
 
-//4. 通过Array.from()方法来实现准换
+//4. 通过Array.from()方法来实现转换
 Array.from(arrayLike);
 
 //遍历类数组
 
 //1. 将数组的方法应用到类数组上，这时候就可以使用call和apply方法
 function foo() {
-    Array.prototype.forEach.call(arguments, (a) => console.log(a));
+	Array.prototype.forEach.call(arguments, (a) => console.log(a));
 }
 
 //2. 使用Array.from方法将类数组转化成数组
 function foo1() {
-    const arrArgs = Array.from(arguemnet);
-    arrArgs.forEach((a) => console.log(a));
+	const arrArgs = Array.from(arguments);
+	arrArgs.forEach((a) => console.log(a));
 }
 
 //3. 使用展开操作符将类数组转换为数组
 
 function foo() {
-    const arrArgs = [...arguments];
-    arrArgs.forEach((a) => console.log(a));
+	const arrArgs = [...arguments];
+	arrArgs.forEach((a) => console.log(a));
 }

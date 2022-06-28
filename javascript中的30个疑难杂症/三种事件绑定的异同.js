@@ -12,11 +12,11 @@
  */
 
 //DOM0级事件绑定：
-document.getElementById("div").onclick = function() {
-    alert("hello Mooc");
+document.getElementById("div").onclick = function () {
+	alert("hello Mooc");
 };
 
-//DOM2级事件：事假监听
+//DOM2级事件：事件监听
 /**
  * element.addEventListener(event, function, useCapture) removeEventListener
  * event: 事件名(必须)，支持所有DOM事件。
@@ -30,10 +30,10 @@ document.getElementById("div").onclick = function() {
 document.getElementById("btn1").addEventListener("click", func2);
 
 function func2() {
-    alert("Hello Mooc");
+	alert("Hello Mooc");
 }
 
-//事件监听的优点： 可以绑定多个事件； 常规的事件绑定只能执行官最后绑定的一个事件，
-//原因： js不支持事件重载， 绑定事件相当于一个变量存储的时函数的地址，
+// 事件监听的优点： 可以绑定多个事件； 常规的事件绑定只能执行官最后绑定的一个事件，
+// 原因： js不支持事件重载， 绑定事件相当于一个变量存储的时函数的地址，
 // 如果在绑定H一个事件， 相当于变量指向了拎一个函数地址； 事件监听相当于订阅发布者，
-//改变了数据， 出发了事件， 订阅这个事件的函数被执行
+// 改变了数据， 出发了事件， 订阅这个事件的函数被执行

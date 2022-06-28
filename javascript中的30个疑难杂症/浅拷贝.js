@@ -11,33 +11,33 @@
 
 //1. 遍历
 var obj = {
-    //定义一个对象obj
-    a: "Hello",
-    b: {
-        a: "world",
-        b: 112,
-    },
-    c: [11, "Jack", "Tom"],
+	//定义一个对象obj
+	a: "Hello",
+	b: {
+		a: "world",
+		b: 112,
+	},
+	c: [11, "Jack", "Tom"],
 };
 
 //遍历拷贝
 function simpleClone(newObj) {
-    var obj = {};
-    for (let i in newObj) {
-        obj[i] = newObj[i];
-    }
-    return obj;
+	var obj = {};
+	for (let i in newObj) {
+		obj[i] = newObj[i];
+	}
+	return obj;
 }
 
 var objCopy = simpleClone(obj);
 console.log(obj);
 console.log(objCopy);
 //改变objCopy的属性值
-objCopy.b.a = "nihao";
+objCopy.b.a = "hello world";
 console.log(obj);
 console.log(objCopy);
 
 //2. Object.create()方法：
 
 var objCopy1 = Object.create(obj);
-console.log(objCopy1); //输出 {}, 将属性拷贝到_propto_上了
+console.log(objCopy1); //输出 {}, 将属性拷贝到__proto__上了

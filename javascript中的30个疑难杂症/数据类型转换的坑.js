@@ -17,8 +17,8 @@ console.log(parseFloat((0.1 + 0.2).toFixed(2))); //0.3
 
 //方案 2：
 function add(num1, num2) {
-    m = Math.pow(10, 2);
-    return (num1 * m + num2 * m) / m;
+	m = Math.pow(10, 2);
+	return (num1 * m + num2 * m) / m;
 }
 
 console.log(add(0.1, 0.2)); //0.3

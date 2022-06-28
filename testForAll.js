@@ -117,3 +117,6 @@ let arr3 = arr.map((e) => e ** 2);
 console.log(arr3);
 
 const arr1 = [2, 4, 6, 8, 10].forEach((e) => console.log(e));
+
+console.log("hello world!");
+console.log((2).constructor);

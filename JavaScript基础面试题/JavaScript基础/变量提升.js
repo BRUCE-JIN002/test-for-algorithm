@@ -10,10 +10,8 @@ console.log(b);
 let temp = new Date();
 
 function fn() {
-    console.log(temp);
-    if (false) {
-        let temp = "Hello World!";
-    }
+	console.log(temp);
+	var temp = "Hello World!";
 }
 
 /**
@@ -28,7 +26,7 @@ fn(); //undefined
 var tmp = "Hello World";
 
 for (var i = 0; i < tmp.length; i++) {
-    console.log(tmp[i]);
+	console.log(tmp[i]);
 }
 
-console.log(i); //d
+console.log(i); //11
