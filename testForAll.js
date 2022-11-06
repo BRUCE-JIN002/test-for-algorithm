@@ -1,13 +1,14 @@
-var title = "全局标题";
+async function* asyncGen(n) {
+	for (let i = 0; i < n; i++) yield i * 2;
+}
 
-var imooc = {
-	title: "imoocName",
-	getTitle: function () {
-		console.log(this.title);
-	},
-};
+const arr = await Array.fromAsync(asyncGen(4));
+console.log(arr);
 
-imooc.getTitle();
+// arr 将变为 [0, 2, 4, 6]
+// const arr = [];
+// for await (const v of asyncGen(4)) {
+// 	arr.push(v);
+// }
 
-var bar = imooc.getTitle;
-bar();
+// 与上述方式是等价的

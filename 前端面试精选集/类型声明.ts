@@ -3,19 +3,19 @@
  * 另外有一个名为setPerson的函数用来给person变量设置键值。
  */
 type Person = {
-	name: string;
-	gender: "male" | " female";
-	age: number;
+  name: string;
+  gender: "male" | " female";
+  age: number;
 };
 
 const person: Person = {
-	name: "Jack",
-	gender: "male",
-	age: 22,
+  name: "Jack",
+  gender: "male",
+  age: 22,
 };
 
 function setPerson(prop, value) {
-	person[prop] = value;
+  person[prop] = value;
 }
 
 //请给setPerson写一个类型声明，使得其第一个参数限制为 Person 类型的键，
@@ -25,5 +25,5 @@ function setPerson(prop, value) {
 type SetPerson = <k extends keyof Person>(prop: k, value: Person[k]) => void;
 
 const setPerson1: SetPerson = (prop, value) => {
-	person[prop] = value;
+  person[prop] = value;
 };
