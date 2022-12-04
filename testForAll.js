@@ -1,14 +1,9 @@
-async function* asyncGen(n) {
-	for (let i = 0; i < n; i++) yield i * 2;
+const obj = {
+  note1: "jin",
+  note2: "xian",
+  note3: "xinag",
+};
+
+for (const [key, value] of Object.entries(obj)) {
+  console.log(`key: ${key}  value: ${value}`);
 }
-
-const arr = await Array.fromAsync(asyncGen(4));
-console.log(arr);
-
-// arr 将变为 [0, 2, 4, 6]
-// const arr = [];
-// for await (const v of asyncGen(4)) {
-// 	arr.push(v);
-// }
-
-// 与上述方式是等价的
