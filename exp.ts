@@ -1,24 +1,24 @@
 interface Props {
-	name: string;
-	age: number;
-	info: {};
+  name: string;
+  age: number;
+  info: {};
 }
 
 interface Detail {
-	boss: Props;
-	num: string | number;
+  boss: Props;
+  num: string | number;
 }
 
 const detail: Detail = {
-	boss: {
-		name: "LiLong",
-		age: 28,
-		info: {
-			sex: "male",
-			address: "nanjinglu",
-		},
-	},
-	num: "1",
+  boss: {
+    name: "LiLong",
+    age: 28,
+    info: {
+      sex: "male",
+      address: "nanjinglu",
+    },
+  },
+  num: "1",
 };
 
 console.log(detail.boss.name);

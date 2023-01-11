@@ -1,9 +1,11 @@
-const obj = {
-  note1: "jin",
-  note2: "xian",
-  note3: "xinag",
-};
+let timer = setTimeout(
+  (val1, val2) => {
+    console.log("123");
+    console.log(val1 + val2);
+  },
+  1000,
+  2,
+  3
+);
 
-for (const [key, value] of Object.entries(obj)) {
-  console.log(`key: ${key}  value: ${value}`);
-}
+console.log(timer);
