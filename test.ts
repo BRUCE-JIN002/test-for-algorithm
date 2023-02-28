@@ -13,7 +13,9 @@ for (const [key, value] of Object.entries(obj)) {
 const arr: Array<number> = [1, 2, 3];
 console.log(arr);
 
-const validateObject = (object: { [key: string]: unknown }) => {
+const validateObject = (object: {
+  [key: string]: string | number | null | undefined;
+}) => {
   const result = { ...object };
   Object.keys(result).forEach((key) => {
     const value = result[key];

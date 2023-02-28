@@ -3,21 +3,21 @@
 //axios(config);
 //发起一个post请求
 axios({
-    method: "post",
-    url: "/user/12345",
-    data: {
-        firstName: "Fred",
-        lastName: "Flintstone",
-    },
+  method: "post",
+  url: "/user/12345",
+  data: {
+    firstName: "Fred",
+    lastName: "Flintstone",
+  },
 });
 
 //在node.js用 GET请求获取远程图片
 axios({
-    method: "get",
-    url: "http://bit.ly/12345",
-    responseType: "stream",
-}).then(function(response) {
-    response.data.pipe(fs.createWriteStream)("add_lovelace.jpg");
+  method: "get",
+  url: "http://bit.ly/12345",
+  responseType: "stream",
+}).then(function (response) {
+  response.data.pipe(fs.createWriteStream)("add_lovelace.jpg");
 });
 
 //axios(url[, config])
