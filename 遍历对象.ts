@@ -1,17 +1,12 @@
-const obj = {
+const obj123 = {
   note1: "jin",
   note2: "xian",
   note3: undefined,
   num: 3,
 };
 
-for (const [key, value] of Object.entries(obj)) {
-  if (value === undefined) {
-  }
-}
-
-const arr: Array<number> = [1, 2, 3];
-console.log(arr);
+const array: Array<number> = [1, 2, 3];
+console.log(array);
 
 const validateObject = (object: {
   [key: string]: string | number | null | undefined;
@@ -26,5 +21,5 @@ const validateObject = (object: {
   return result;
 };
 
-let res = validateObject(obj);
+let res = validateObject(obj123);
 console.log(res);

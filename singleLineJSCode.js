@@ -39,7 +39,7 @@ console.log(isOdd(num));
 //将数字转换为千分位模式
 
 const num1 = 1000000;
-const toDecimal = (num) => num.toLocaleString();
+const toDecimal = (num) => num.toLocaleString(); //1,000,000
 
 console.log(toDecimal(num1));
 
@@ -50,9 +50,9 @@ console.log(getRandomBoolean()); //true | false
 
 //数组去重
 
-let arr = [1, 1, 2, 2, 3, 3, 4, 5, 6, 7, 7, 8, 8, 9];
+let arr = [1, 1, 2, 4, 5, 6, 7, 2, 3, 3, 7, 8, 8, 9, 0];
 
-const uniqueArr = (arr) => [...new Set(arr)];
+const uniqueArr = (arr) => [...new Set(arr)].sort((a, b) => a - b);
 
 console.log(uniqueArr(arr));
 
@@ -63,10 +63,10 @@ const arrSum = (sumArr) => sumArr.reduce((a, b) => a + b, 0);
 
 console.log(arrSum(sumArr)); //66
 
-//计算数组的平均值
-const meanArr = (arr) => arr.reduce((a, b) => a + b) / arr.length;
+//计算数组的平均值并保留两位小数
+const meanArr = (arr) => (arr.reduce((a, b) => a + b) / arr.length).toFixed(2);
 
-console.log(meanArr(sumArr)); //4.714285714285714
+console.log(meanArr(sumArr)); //4.714285714285714 => 4.71
 
 //数组随机排列
 const sortRadom = (arr) => arr.sort(() => Math.random() - 0.5);
@@ -79,7 +79,7 @@ const intersection = (arr1, arr2) => arr1.filter((v) => arr2.includes(v));
 
 console.log(intersection([1, 2, 3, 4], [1, 2, 35, 6])); //[1, 2]
 
-//多维数组转换为一位数组
+//多维数组转换为一位数组并求和
 const deepFlattenArr = (arr) =>
   [].concat(...arr.map((v) => (Array.isArray(v) ? deepFlattenArr(v) : v)));
 
@@ -107,5 +107,13 @@ console.log(filterProp(data, keys));
 // [ { title: 'jin', num: 1 }, { title: 'xian', num: 333 } ]
 
 const test = [1, 2, 3, 4];
-console.log(test.slice(1));
-console.log(test.splice(0, 1));
+console.log(test.slice(1)); //[ 2, 3, 4 ]
+console.log(test.splice(0, 1)); //[ 1 ]
+
+const test1 = [1, 2, 3, 4];
+
+test1.splice(1, 1);
+console.log(test1); //[ 1, 3, 4 ]
+
+console.table({ key: "123" });
+console.log("%c Hello World", "color: red; font-size: 40px");

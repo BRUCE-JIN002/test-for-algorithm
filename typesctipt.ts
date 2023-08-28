@@ -12,9 +12,9 @@ console.log(timer);
 console.log(`hello
 good Night bye bye!`);
 
-let str = "return " + "`hello  ${name}`";
+let strr = "return " + "`hello  ${name}`";
 
-let func = new Function("name", str);
+let func = new Function("name", strr);
 console.log(func("Jack"));
 
 let str1 = "(name) => `Hello ${name}`";
