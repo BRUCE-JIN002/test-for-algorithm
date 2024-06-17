@@ -5,12 +5,7 @@ const obj123 = {
   num: 3,
 };
 
-const array: Array<number> = [1, 2, 3];
-console.log(array);
-
-const validateObject = (object: {
-  [key: string]: string | number | null | undefined;
-}) => {
+const validateObject = (object: Record<string, any>) => {
   const result = { ...object };
   Object.keys(result).forEach((key) => {
     const value = result[key];
@@ -21,5 +16,9 @@ const validateObject = (object: {
   return result;
 };
 
-let res = validateObject(obj123);
-console.log(res);
+const result = validateObject(obj123);
+console.log(result);
+
+type LL = Array<keyof typeof obj123>;
+
+const a: LL = ["note1"];

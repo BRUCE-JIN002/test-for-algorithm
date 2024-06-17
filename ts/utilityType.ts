@@ -6,6 +6,7 @@ interface Example {
   isAdmin: boolean;
 }
 
+//Omit工具
 type Example1 = Omit<Example, "name" | "sex">;
 
 const obj1: Example1 = {
@@ -14,6 +15,7 @@ const obj1: Example1 = {
   isAdmin: false,
 };
 
+//Pick工具
 type Example2 = Pick<Example, "age" | "name">;
 
 const obj2: Example2 = {
@@ -34,6 +36,7 @@ const obj3: Example4 = {
   isAdmin: true,
 };
 
+//Record工具
 type Example5 = Record<"address" | "sex", string>;
 
 type Example6 = Record<keyof Example, string>;
@@ -62,7 +65,6 @@ type Data = Point[];
 type PointDetail = Data[number];
 
 // keyof 取interface的健
-
 interface Point1 {
   x: number;
   y: number;
@@ -90,3 +92,9 @@ if (err) {
 } else {
   console.log("Hi");
 }
+
+const colors = ["red", "yellow", "blue", "green"] as const;
+type Color = (typeof colors)[number];
+
+const values = ["1", "2", "3", "4"] as const;
+type Value = (typeof values)[never];

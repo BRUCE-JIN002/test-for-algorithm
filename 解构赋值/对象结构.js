@@ -6,9 +6,9 @@
  */
 
 let options = {
-    title: "Menu",
-    width: 100,
-    height: 100,
+  title: "Menu",
+  width: 100,
+  height: 100,
 };
 
 let { title, width, height } = options;
@@ -25,9 +25,9 @@ console.log(height1);
 //如果我们想把一个属性赋值给另一个名字的变量，比如把 options.width 属性赋值给名为 w 的变量，
 //那么我们可以使用冒号来设置变量名称
 let option1 = {
-    title: "Span",
-    width: 100,
-    height: 100,
+  title: "Span",
+  width: 100,
+  height: 100,
 };
 
 let { width: w, height: h, title: t } = option1;
@@ -41,7 +41,7 @@ console.log(t);
 //就像数组或函数参数一样，默认值可以是任意表达式甚至可以是函数调用。
 //它们只会在未提供对应的值时才会被计算/调用。
 let opt = {
-    title2: "Select",
+  title2: "Select",
 };
 
 //对于可能缺失的属性，我们可以使用 "=" 设置默认值，如下所示:
@@ -53,7 +53,7 @@ console.log(title2); //Select
 
 //我们还可以将冒号和等号结合起来
 let options3 = {
-    title3: "Menu",
+  title3: "Menu",
 };
 
 let { width: w1 = 100, height: h1 = 200, title3 } = options3;
@@ -64,9 +64,9 @@ console.log(title3); // Menu
 
 //如果我们有一个具有很多属性的复杂对象，那么我们可以只提取所需的内容：
 let options1 = {
-    title: "Button",
-    width: 100,
-    height: 100,
+  title: "Button",
+  width: 100,
+  height: 100,
 };
 
 let { title: t1 } = options1;
@@ -80,9 +80,9 @@ console.log(t1);
  * 看起来就像这样：
  */
 let options5 = {
-    title5: "Menu",
-    height5: 500,
-    width5: 500,
+  title5: "Menu",
+  height5: 500,
+  width5: 500,
 };
 
 // title = 名为 title 的属性

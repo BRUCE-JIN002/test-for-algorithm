@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Worker Example</title>
+  </head>
+  <body>
+    <h1>Web Worker Example</h1>
+    <p>Enter a number to calculate its Fibonacci sequence:</p>
+    <input type="text" id="inputNumber" value="5" />
+    <button onclick="calculateFibonacci()">Calculate</button>
+    <button onclick="testPerformance()">Worker Test</button>
+    <p id="#result"></p>
+
+    <script type="worker" src="./worker2.js"></script>
+    <script type="worker" src="./worker1.js"></script>
+
+    <script>
+      function calculateFibonacci() {
+        var n = parseInt(document.getElementById("inputNumber").value);
+        console.log(n);
+        var worker = new Worker("./worker2.js");
+        worker.postMessage(n);
+        worker.onmessage = function (event) {
+          document.getElementById("#result").textContent =
+            "Fibonacci of " + n + " is " + event.data;
+        };
+      }
+
+      function testPerformance() {
+        const workerCount = 1;
+        const workers = new Array(workerCount)
+          .fill(0)
+          .map(() => new Worker("./worker1.js"));
+
+        const num = 10000000000000;
+        let sum = 0;
+        let count = 0;
+        const startTimeStamp = performance.now();
+
+        //监听返回值
+        workers.forEach((worker) => {
+          worker.onmessage = function (event) {
+            sum += event.data;
+            count++;
+            if (count === workers.length) {
+              //执行完所有的worker
+              const endTimeStamp = performance.now();
+              console.log(`总耗时：${endTimeStamp - startTimeStamp} ms`);
+            }
+          };
+        });
+
+        let start = 1;
+        const MAX_DURATION = Math.ceil(num / workers.length);
+        workers.forEach((worker) => {
+          const end = Math.min(start + MAX_DURATION, num);
+          worker.postMessage({
+            start,
+            end,
+          });
+          start = end + 1;
+        });
+      }
+    </script>
+  </body>
+</html>

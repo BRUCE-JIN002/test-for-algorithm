@@ -1,12 +1,12 @@
-//判断对向是否为空
+//判断对象是否为空
 
-//低效做法
+//1.低效做法
 const isEmptyObj = (obj) => JSON.stringify(obj) === "{}";
 
 const obj = {};
 
 console.log(isEmptyObj(obj)); //true
-//高效做法
+//2.高效做法
 
 const isEmptyObj1 = (obj) => !Object.keys(obj).length;
 
@@ -14,7 +14,7 @@ console.log(isEmptyObj1(obj)); //true
 
 //反转字符串
 
-let str = "ni hao a xiao peng you";
+let str = "ni hao xiao peng you";
 
 const reverseString = (str) => str.split(" ").reverse().join(" ");
 
@@ -37,8 +37,7 @@ const isOdd = (num) => num % 2 === 0;
 console.log(isOdd(num));
 
 //将数字转换为千分位模式
-
-const num1 = 1000000;
+const num1 = 100000.0;
 const toDecimal = (num) => num.toLocaleString(); //1,000,000
 
 console.log(toDecimal(num1));
@@ -49,7 +48,6 @@ const getRandomBoolean = () => Math.random() >= 0.5;
 console.log(getRandomBoolean()); //true | false
 
 //数组去重
-
 let arr = [1, 1, 2, 4, 5, 6, 7, 2, 3, 3, 7, 8, 8, 9, 0];
 
 const uniqueArr = (arr) => [...new Set(arr)].sort((a, b) => a - b);
@@ -74,7 +72,6 @@ const sortRadom = (arr) => arr.sort(() => Math.random() - 0.5);
 console.log(sortRadom(sumArr));
 
 //获取数组的交集
-
 const intersection = (arr1, arr2) => arr1.filter((v) => arr2.includes(v));
 
 console.log(intersection([1, 2, 3, 4], [1, 2, 35, 6])); //[1, 2]
@@ -97,23 +94,23 @@ const filterProp = (data, keys) =>
   );
 
 let data = [
-  { title: "jin", name: "Tom", age: 26, num: 001 },
+  { title: "jin", name: "Tom", age: 26, num: 1 },
   { title: "xian", name: "Kim", age: 88, num: 333 },
 ];
 
-const keys = ["title", "num"];
+const keys = ["title", "num", "age"];
 
 console.log(filterProp(data, keys));
 // [ { title: 'jin', num: 1 }, { title: 'xian', num: 333 } ]
 
 const test = [1, 2, 3, 4];
-console.log(test.slice(1)); //[ 2, 3, 4 ]
-console.log(test.splice(0, 1)); //[ 1 ]
+console.log(test.slice(1)); // [ 2, 3, 4 ]
+console.log(test.splice(0, 1)); // [ 1 ]
 
 const test1 = [1, 2, 3, 4];
 
 test1.splice(1, 1);
-console.log(test1); //[ 1, 3, 4 ]
+console.log(test1); // [ 1, 3, 4 ]
 
 console.table({ key: "123" });
 console.log("%c Hello World", "color: red; font-size: 40px");

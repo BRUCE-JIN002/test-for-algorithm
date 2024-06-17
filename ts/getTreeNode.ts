@@ -19,7 +19,7 @@ const treeData: TreeNode[] = [
           },
           {
             value: "leaf2",
-            title: "your leaf",
+            title: "target leaf",
           },
         ],
       },
@@ -37,12 +37,15 @@ const treeData: TreeNode[] = [
   },
 ];
 
-function getAreaNameFromCode(areaCode: string, provinceArea: TreeNode[]) {
-  let result;
+function getAreaNameFromCode(
+  areaCode: string,
+  provinceArea: TreeNode[]
+): TreeNode {
+  let result = {} as TreeNode;
   const helper = (provinceArea: TreeNode[]) => {
     provinceArea.map((item) => {
       if (item.value === areaCode) {
-        result = item.title;
+        result = item;
         return result;
       } else if (item.children) {
         helper(item.children);
