@@ -9,14 +9,14 @@
         max-height: 0; /* 初始高度为0 */
         transition: max-height 0.3s ease-in-out; /* 添加过渡效果 */
       }
-      .container.active {
+      .active {
         max-height: 100px; /* 过渡到指定高度 */
       }
     </style>
   </head>
   <body>
     <button
-      onclick="document.querySelector('.container').classList.toggle('active')"
+      onclick="document.querySelector('.container').classList.add('active')"
     >
       切换高度
     </button>
