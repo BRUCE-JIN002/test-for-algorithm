@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fixed Button with Transition</title>
+    <style>
+      /* Add some styles to the div and button */
+      #scrollDiv {
+        height: 300px;
+        overflow-y: scroll;
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+      #scrollButton {
+        position: fixed;
+        right: 20px;
+        bottom: 70px;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: bottom 0.3s ease-out; /* Add the transition effect */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scrollDiv">
+      <!-- Your content goes here -->
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+      <p>This is some content inside the div.</p>
+    </div>
+    <button id="scrollButton">Scroll to Top</button>
+
+    <!-- Add the JavaScript code here -->
+    <script>
+      function scrollToTop() {
+        var divElement = document.getElementById("scrollDiv");
+        var scrollY = divElement.scrollTop;
+
+        function scrollToTopAnimation(timestamp) {
+          var currentTime = timestamp || performance.now();
+          var timeElapsed = currentTime - startTime;
+          var scrollDuration = 500; // Adjust the duration here (milliseconds)
+
+          var easeOutCubic = function (t) {
+            return 1 - Math.pow(1 - t, 3);
+          };
+
+          var percentage = Math.min(timeElapsed / scrollDuration, 1);
+          var easePercentage = easeOutCubic(percentage);
+
+          divElement.scrollTop = scrollY - scrollY * easePercentage;
+
+          if (timeElapsed < scrollDuration) {
+            requestAnimationFrame(scrollToTopAnimation);
+          }
+        }
+
+        var startTime = performance.now();
+        requestAnimationFrame(scrollToTopAnimation);
+      }
+
+      document
+        .getElementById("scrollButton")
+        .addEventListener("click", scrollToTop);
+    </script>
+  </body>
+</html>

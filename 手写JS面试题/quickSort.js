@@ -1,3 +1,4 @@
+//1. 冒泡排序
 const bubbleSort = (arr) => {
   for (let i = 0; i < arr.length - 1; i++) {
     for (let j = i + 1; j < arr.length; j++) {
@@ -11,6 +12,7 @@ const bubbleSort = (arr) => {
 
 // console.log(bubbleSort([1, 3, 2, 14, 5, 0, 8, 6, 90]));
 
+//2. 快速排序
 const quickSort = (arr) => {
   if (arr.length < 2) return arr;
   let flag = arr[0];

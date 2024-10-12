@@ -4,7 +4,8 @@ function ListNode(val) {
 }
 
 const head = new ListNode(0);
-temp = head;
+let temp = head;
+
 for (let i = 1; i < 10; i++) {
     let t = new ListNode(i);
     temp.next = t;

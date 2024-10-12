@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .table-container {
+        position: absolute;
+        top: 100px;
+        left: 400px;
+        width: 50%;
+        height: 400px;
+        overflow-y: auto; /* Enable vertical scrolling */
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+      }
+
+      .row {
+        border: 1px solid #000;
+      }
+
+      .row th,
+      td {
+        padding: 8px;
+        border: 1px solid #b5bdc7;
+        /* background-color: #f2f2f2; */
+        white-space: normal; /* Wrap text inside cells */
+      }
+
+      .header {
+        font-weight: bold;
+        position: sticky; /* Make the header sticky */
+        top: 0; /* Stick the header to the top of the container */
+        background-color: #5cbfdd; /* Add background color to the header */
+      }
+
+      /* .header th:nth-child(1), */
+      .header th:nth-child(2) {
+        width: 20%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr class="row header">
+            <th style="width: 50px">表头1</th>
+            <th style="width: 50px">表头2</th>
+            <th colspan="2" style="text-align: left">表头3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row">
+            <td rowspan="3">
+              <div>列1-1</div>
+              <div>列1-2</div>
+            </td>
+            <td rowspan="3">列2</td>
+            <td>
+              内容1et width for the first and second columnset width for the
+              first and second columnset width for the first and second columns
+            </td>
+            <td>内容2</td>
+          </tr>
+          <tr class="row">
+            <td>行2</td>
+            <td>内容3</td>
+          </tr>
+          <tr class="row">
+            <td>行2</td>
+            <td>内容3</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr class="row">
+            <td rowspan="3">
+              <div>列1-1</div>
+              <div>列1-2</div>
+            </td>
+            <td rowspan="3">列2</td>
+            <td>
+              内容1et width for the first and second columnset width for the
+              first and second columnset width for the first and second columns
+            </td>
+            <td>内容2</td>
+          </tr>
+          <tr class="row">
+            <td>行2</td>
+            <td>内容3</td>
+          </tr>
+          <tr class="row">
+            <td>行2</td>
+            <td>内容3</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr class="row">
+            <td rowspan="3">
+              <div>列1-1</div>
+              <div>列1-2</div>
+            </td>
+            <td rowspan="3">列2</td>
+            <td>
+              内容1et width for the first and second columnset width for the
+              first and second columnset width for the first and second columns
+            </td>
+            <td>内容2</td>
+          </tr>
+          <tr class="row">
+            <td>行2</td>
+            <td>内容3</td>
+          </tr>
+          <tr class="row">
+            <td>行2</td>
+            <td>内容3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

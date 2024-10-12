@@ -1,0 +1,32 @@
+.container {
+  font-size: 16px;
+  line-height: 1.6;
+  background: #f5f5f5;
+  padding: 20px 40px;
+  border-radius: 20px;
+  box-shadow: 0 5px 5px #ddd;
+  width: 400px;
+}
+
+.content {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+.expand-btn {
+  background-color: black;
+  border: none;
+  color: rgb(0, 149, 255);
+  cursor: pointer;
+}
+
+.text-container {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px; /* 可选：限制容器的宽度 */
+}

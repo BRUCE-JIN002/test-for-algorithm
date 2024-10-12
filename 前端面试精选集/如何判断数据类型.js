@@ -22,7 +22,7 @@ BigDog.prototype = new Dog();
 
 Object.defineProperty(BigDog.prototype, "constructor", {
     value: BigDog,
-    enumerable: false,
+    enumerable: false
 });
 
 const bigDog = new BigDog();

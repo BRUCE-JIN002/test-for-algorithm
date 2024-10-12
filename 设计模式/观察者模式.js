@@ -88,12 +88,16 @@ class DeveloperObserver extends Observer {
 
 // 创建订阅者：前端开发李雷
 const liLei = new DeveloperObserver();
+
 // 创建订阅者：服务端开发小A（sorry。。。起名字真的太难了）
 const A = new DeveloperObserver();
+
 // 创建订阅者：测试同学小B
 const B = new DeveloperObserver();
+
 // 韩梅梅出现了
 const hanMeiMei = new PrdPublisher();
+
 // 需求文档出现了
 const prd = {
   // 具体的需求内容

@@ -4,16 +4,16 @@
 
 console.log("script start");
 
-setTimeout(function() {
-    console.log("setTimeout");
+setTimeout(function () {
+  console.log("setTimeout");
 }, 0);
 
-new Promise(function(resolve) {
-    console.log("promise1");
-    resolve();
-    console.log("promise2");
-}).then(function() {
-    console.log("promise then");
+new Promise(function (resolve) {
+  console.log("promise1");
+  resolve();
+  console.log("promise2");
+}).then(function () {
+  console.log("promise then");
 });
 
 console.log("script end");
@@ -30,7 +30,7 @@ console.log("script end");
  * 宏任务（macro-task）:
  *    同步 script (整体代码)，setTimeout 回调函数, setInterval 回调函数, I/O, UI rendering；
  * 微任务（micro-task）:
- *    process.nextTick, Promise 回调函数，Object.observe，MutationObserver
+ *    process.nextTick, Promise 回调函数，MutationObserver
  *
  * 其执行的顺序是这样的：
  * 首先 JavaScript 引擎会执行一个宏任务，注意这个宏任务一般是指主干代码本身，也就是目前的同步代码
@@ -45,9 +45,9 @@ console.log("script end");
  */
 
 for (var i = 0; i < 5; i++) {
-    setTimeout(function() {
-        console.log(i);
-    }, 3000);
+  setTimeout(function () {
+    console.log(i);
+  }, 3000);
 }
 
 console.log(100);
@@ -73,18 +73,18 @@ console.log(100);
 
 //方法一： 立即执行函数
 for (var i = 0; i < 5; i++) {
-    (function outerFunction(num) {
-        setTimeout(() => {
-            console.log(num);
-        }, 1000);
-    })(i);
+  (function outerFunction(num) {
+    setTimeout(() => {
+      console.log(num);
+    }, 1000);
+  })(i);
 }
 
 //方法二：let
 for (let i = 0; i < 5; i++) {
-    setTimeout(() => {
-        console.log(i);
-    }, 1000);
+  setTimeout(() => {
+    console.log(i);
+  }, 1000);
 }
 
 /**
@@ -94,7 +94,7 @@ for (let i = 0; i < 5; i++) {
 
 document.body.style = "background: blue";
 Promise.resolve().then(() => {
-    document.body.style = "background: black";
+  document.body.style = "background: black";
 });
 
 /**

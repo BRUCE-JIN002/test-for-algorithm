@@ -9,33 +9,33 @@
  */
 
 function TreeNode(val) {
-    this.val = val;
-    this.left = this.right = null;
+  this.val = val;
+  this.left = this.right = null;
 }
 
 //前序遍历
 function preTracersal(node) {
-    if (node) {
-        console.log(node.val);
-        preTracersal(node.left);
-        preTracersal(node.right);
-    }
+  if (node) {
+    console.log(node.val);
+    preTracersal(node.left);
+    preTracersal(node.right);
+  }
 }
 
 //中序遍历
 function preTracersal(node) {
-    if (node) {
-        preTracersal(node.left);
-        console.log(node.val);
-        preTracersal(node.right);
-    }
+  if (node) {
+    preTracersal(node.left);
+    console.log(node.val);
+    preTracersal(node.right);
+  }
 }
 
 //后序遍历
 function preTracersal(node) {
-    if (node) {
-        preTracersal(node.left);
-        preTracersal(node.right);
-        console.log(node.val);
-    }
+  if (node) {
+    preTracersal(node.left);
+    preTracersal(node.right);
+    console.log(node.val);
+  }
 }

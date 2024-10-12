@@ -19,10 +19,8 @@ class Storage {
 const storage1 = Storage.getInstance();
 const storage2 = Storage.getInstance();
 
-storage1.setItem("name", "李雷");
-//李雷
-storage1.getItem("name");
-//也是李雷
+storage1.setItem("name", "李雷"); //set: name -> 李雷
 
-//返回true
+storage2.getItem("name"); //也是李雷
+
 storage1 === storage2; //true

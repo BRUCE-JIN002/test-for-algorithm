@@ -60,7 +60,7 @@ class webSocketClass {
       let params = {
         request: "ping"
       };
-      this.sendwebSocketMsg(JSON.stringify(params));
+      this.sendWebSocketMsg(JSON.stringify(params));
       this.webSocketState = true; // 在连接成功后设置为true
       this.waitingServer();
     }, 30000);
@@ -95,7 +95,7 @@ class webSocketClass {
     }, 15000);
   }
 
-  sendwebSocketMsg(msg) {
+  sendWebSocketMsg(msg) {
     this.ws.send(msg);
   }
 
@@ -104,7 +104,7 @@ class webSocketClass {
       callback && callback(ev);
     };
   }
-  onopenSuccess(callback) {
+  onOpenSuccess(callback) {
     this.ws.onopen = () => {
       // console.log("连接成功", new Date().toLocaleString())
       callback && callback();

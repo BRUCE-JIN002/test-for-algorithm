@@ -1,0 +1,38 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.flex-container {
+  display: flex;
+  height: 100%;
+}
+
+.flex-item {
+  flex: 1;
+  border: 1px solid #ccc;
+  display: flex;
+}
+
+.content {
+  padding: 10px;
+  word-wrap: break-word;
+}
+
+.divider {
+  width: 10px;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dividerButton {
+  height: 30px;
+  width: 10px;
+  border-radius: 3px;
+  background: rgb(154, 155, 154);
+  cursor: ew-resize;
+}

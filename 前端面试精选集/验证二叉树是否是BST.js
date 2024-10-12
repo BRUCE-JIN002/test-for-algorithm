@@ -6,51 +6,51 @@
  */
 
 function TreeNode(val) {
-    this.val = val;
-    this.left = this.right = null;
+  this.val = val;
+  this.left = this.right = null;
 }
 
 const isValidBST = (root) => {
-    if (!root) {
-        return true;
-    }
+  if (!root) {
+    return true;
+  }
 
-    function helper(root, min, max) {
-        if (!root) {
-            return true;
-        }
-        if (
-            (min !== null && root.val <= min) ||
-            (max !== null && root.val >= max)
-        ) {
-            return false;
-        }
-        return (
-            helper(root.left, min, root.val) && helper(root.right, root.val, max)
-        );
+  function helper(root, min, max) {
+    if (!root) {
+      return true;
     }
-    return helper(root, null, null);
+    if (
+      (min !== null && root.val <= min) ||
+      (max !== null && root.val >= max)
+    ) {
+      return false;
+    }
+    return (
+      helper(root.left, min, root.val) && helper(root.right, root.val, max)
+    );
+  }
+  return helper(root, null, null);
 };
 
 const f = helper();
 console.log(f(root));
 
 //使用栈
-var isValidBST1 = function(root) {
-    let stack = [];
-    let inorder = -Infinity;
+var isValidBST1 = function (root) {
+  let stack = [];
+  let inorder = -Infinity;
 
-    while (stack.length || root !== null) {
-        while (root !== null) {
-            stack.push(root);
-            root = root.left;
-        }
-        root = stack.pop();
-        if (root.val <= inorder) {
-            return false;
-        }
-        inorder = root.val;
-        root = root.right;
+  while (stack.length || root !== null) {
+    while (root !== null) {
+      stack.push(root);
+      root = root.left;
     }
-    return true;
+    root = stack.pop();
+    if (root.val <= inorder) {
+      return false;
+    }
+    inorder = root.val;
+    root = root.right;
+  }
+  return true;
 };

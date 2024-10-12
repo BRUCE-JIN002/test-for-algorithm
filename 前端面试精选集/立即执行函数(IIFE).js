@@ -4,12 +4,7 @@
  */
 
 //立即执行函数
-(function(val) {
-    console.log(val);
-})(100);
-
-//或者
-(function(val) {
+(function (val) {
     console.log(val);
 })(100);
 

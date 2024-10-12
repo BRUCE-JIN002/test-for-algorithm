@@ -1,4 +1,4 @@
-//交换时使用赋值解构
+//方式1: 交换时使用赋值解构
 function BubbleSort(arr) {
     const len = arr.length;
     for (let i = 0; i < len; i++) {
@@ -14,7 +14,6 @@ function BubbleSort(arr) {
 console.log(BubbleSort([3, 6, 2, 4, 1]));
 
 //方式 2：
-
 function bubbleSort(array, compareFn = defaultCompare) {
     const { length } = array;
     for (let i = 0; i < length; i++) {
