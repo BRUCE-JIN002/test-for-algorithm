@@ -1,0 +1,24 @@
+//如果有循环定时器的需求，其实完全可以通过 requestAnimationFrame 来实现：
+function setInterval(callback, interval) {
+  let timer;
+  const now = Date.now;
+  let startTime = now();
+  let endTime = startTime;
+  const loop = () => {
+    timer = window.requestAnimationFrame(loop);
+    endTime = now();
+    if (endTime - startTime >= interval) {
+      startTime = endTime = now();
+      callback(timer);
+    }
+  };
+  timer = window.requestAnimationFrame(loop);
+  return timer;
+}
+
+let a = 0;
+setInterval((timer) => {
+  console.log(a);
+  a++;
+  if (a === 3) cancelAnimationFrame(timer);
+}, 1000);

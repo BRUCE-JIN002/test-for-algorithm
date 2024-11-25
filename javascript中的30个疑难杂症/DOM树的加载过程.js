@@ -6,7 +6,7 @@
   2.  服务器返回数据， 浏览器接受文件 (html, css, js, img...)为二进制文件
         html: 二进制转换为 html (如：index.html)
         构建DOM树： HTML解析器
-                 TOken -> Node -> DOM
+                 Token -> Node -> DOM
                  Token词法解析， 根据"document"对象 <div></div>
                  Node: HTMLDivElement
                  DOM: DOM和标签几乎是一一对应的关系
@@ -16,15 +16,15 @@
                 底部引入JavaScript代码的原因： 或者说可以在头部引用， 
                 但前提是加上async, defer或window.onload;
                     解析器遇到设置了 async属性的 script时候，开始下载脚本，并继续解析文档，
-                    脚本会在它下载完后尽快执行， 但是解析器不会停下来等他它下载。
-                    如果script标签设置了该属性， 则浏览器就会一步的下载该文件并且不会影响后续的DOM渲染；
+                    脚本会在它下载完后尽快执行，但是解析器不会停下来等他它下载。
+                    如果script标签设置了该属性，则浏览器就会异步地下载该文件并且不会影响后续的DOM渲染；
                     如果存在多个设置了defer的script标签存在，则会啊按照顺序执行所有的script.
-                    defer脚本会在文档渲染完后， DOMContentLoaded事件调用前执行；脚本会被延迟到整个页面
+                    defer脚本会在文档渲染完后，DOMContentLoaded事件调用前执行；脚本会被延迟到整个页面
                     都解析完毕后再执行。
         构建CSS树： 
                 1. css解析器
-                每个css文件解析为样式表对象cssStyleSheet, 每个对象都包含CSSRule; 
-                CSSRule包含选择器和声明对象，以及其他与CSS语法对应的对象。
+                   每个css文件解析为样式表对象cssStyleSheet, 每个对象都包含CSSRule; 
+                   CSSRule包含选择器和声明对象，以及其他与CSS语法对应的对象。
                 2. Token解析：css的词法及语法文法
                 3. Node -> CSSOM
         构建Render树：  渲染树 = DOM树 + CSS树

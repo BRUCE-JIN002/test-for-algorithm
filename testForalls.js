@@ -1,23 +1,15 @@
-const first = () =>
-  new Promise((resolve) => {
-    console.log(3);
+const person = { name: "jin" };
 
-    let p = new Promise((resolve) => {
-      console.log(7);
-      setTimeout(() => {
-        console.log(5);
-        resolve(6);
-      }, 0);
-      resolve(1);
-    });
-    resolve(2);
-    p.then((arg) => {
-      console.log(arg);
-    });
-  });
-
-first().then((arg) => {
-  console.log(arg);
+const proxy = new Proxy(person, {
+  get(target, property) {
+    if (property in target) {
+      return target[property];
+    } else {
+      return undefined;
+      //   throw new ReferenceError('Property "' + property + '" does not exist.');
+    }
+  }
 });
 
-console.log(4);
+console.log(proxy.name); // "jin"
+console.log(proxy.age); // ReferenceError: Property "age" does not exist.

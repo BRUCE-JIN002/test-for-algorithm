@@ -1,10 +1,10 @@
 //在浏览器中运行以下脚本，点击页面后，会打印出 false。请问为什么会打印出 false？
 function Button() {
-    this.clicked = false;
-    this.click = function() {
-        this.clicked = true;
-        console.log(button.clicked, "clicked");
-    };
+  this.clicked = false;
+  this.click = function () {
+    this.clicked = true;
+    console.log(button.clicked, "clicked");
+  };
 }
 const button = new Button();
 document.addEventListener("click", button.click);
@@ -17,25 +17,25 @@ document.addEventListener("click", button.click);
 //更改函数使得其打印出 'true clicked'
 //只需改变 this.click为箭头函数
 function Button1() {
-    this.clicked = false;
-    this.click = () => {
-        this.clicked = true;
-        console.log(button.clicked, "clicked");
-    };
+  this.clicked = false;
+  this.click = () => {
+    this.clicked = true;
+    console.log(button.clicked, "clicked");
+  };
 }
-const button1 = new Button();
-document.addEventListener("click", button.click);
+const button1 = new Button1();
+document.addEventListener("click", button1.click);
 
 //或者使用 bind 方法显式指明 this 指向
 function Button2() {
-    this.clicked = false;
-    this.click = function() {
-        this.clicked = true;
-        console.log(button.clicked, "clicked");
-    };
+  this.clicked = false;
+  this.click = function () {
+    this.clicked = true;
+    console.log(button.clicked, "clicked");
+  };
 }
-const button2 = new Button();
-document.addEventListener("click", button.click.bind(button));
+const button2 = new Button2();
+document.addEventListener("click", button2.click.bind(button2));
 
 //总结：
 /**

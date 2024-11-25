@@ -17,9 +17,10 @@ console.log(typeof objNum1.valueOf()); //123
 
 /**
  * js primitive(input, type) input:传入的值， type： 类型值
- * input 判断是不是原始类型的值： 是， 直接返回
- * 不是： input.valueOf(): 是原始值，直接返回
- * 还不是：input.toString(): string是 原始类型，返回
+ * input 判断是不是原始类型的值：
+ * 1. 是， 直接返回
+ * 2. 不是： input.valueOf(): 是原始值，直接返回
+ * 3. 还不是：input.toString(): string是 原始类型，返回
  * 否则报错
  *
  * valueOf(): input 原始类型的值： 有，返回， 没有， 返回对象本身
