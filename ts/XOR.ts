@@ -32,3 +32,17 @@ const user2: XORUser = {
   //   referer: "www.google.com",
   email: "linbudu@qq.com"
 };
+
+const convertStringToBoolean1 = (obj: Record<string, any>) => {
+  Object.keys(obj).forEach((key) => {
+    switch (obj[key]) {
+      case "true":
+        obj[key] = true;
+        break;
+      case "false":
+        obj[key] = false;
+        break;
+    }
+  });
+  return obj;
+};

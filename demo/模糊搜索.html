@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fuse.js Nested Data Search Highlight</title>
+    <style>
+      .highlight {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Search with Highlighting using Fuse.js</h1>
+    <input type="text" id="searchInput" placeholder="Type to search..." />
+    <ul id="results"></ul>
+
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+    <script>
+      // Sample nested data
+      const books = [
+        {
+          title: "Old Man's War",
+          name: "hello",
+          score: 12,
+          children: [
+            {
+              title: "Hahaha",
+              name: "Lalala",
+              score: 24
+            }
+          ]
+        },
+        {
+          title: "The Lock Artist",
+          name: "world",
+          score: 89,
+          children: [
+            {
+              title: "nidemingzi",
+              name: "wodezhishi",
+              score: 90
+            }
+          ]
+        }
+      ];
+
+      // Initialize Fuse
+      const options = {
+        keys: [
+          "title",
+          "name",
+          "children.title",
+          "children.name",
+          "score",
+          "children.score"
+        ],
+        includeScore: true,
+        threshold: 0.3
+      };
+      const fuse = new Fuse(books, options);
+
+      // Function to highlight text
+      function highlightText(text, query) {
+        if (typeof text !== "string") text = String(text); // Convert non-string to string
+        const regex = new RegExp(query, "gi");
+        return text.replace(
+          regex,
+          (match) => `<span class="highlight">${match}</span>`
+        );
+      }
+
+      // Recursive function to render items
+      function renderItem(item, query) {
+        let result = `<li>${highlightText(item.title, query)} - ${highlightText(
+          item.name,
+          query
+        )} (Score: ${highlightText(item.score, query)})`;
+        if (item.children && item.children.length > 0) {
+          result += "<ul>";
+          item.children.forEach((child) => {
+            result += `<li>${highlightText(
+              child.title,
+              query
+            )} - ${highlightText(child.name, query)} (Score: ${highlightText(
+              child.score,
+              query
+            )})</li>`;
+          });
+          result += "</ul>";
+        }
+        result += "</li>";
+        return result;
+      }
+
+      // Event listener for input changes
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", (event) => {
+          const query = event.target.value.trim();
+          if (!query) {
+            document.getElementById("results").innerHTML = "";
+            return;
+          }
+
+          const results = fuse.search(query);
+          console.log(results);
+          const resultList = document.getElementById("results");
+          resultList.innerHTML = "";
+
+          results.forEach(({ item }) => {
+            resultList.innerHTML += renderItem(item, query);
+          });
+        });
+    </script>
+  </body>
+</html>
