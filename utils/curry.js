@@ -1,11 +1,9 @@
 function currying(fn, ...args) {
   return function (...rest) {
     const allArgs = [...args, ...rest];
-    if (allArgs.length >= fn.length) {
-      return fn.apply(this, allArgs);
-    } else {
-      return currying(fn, ...allArgs);
-    }
+    return allArgs.length >= fn.length
+      ? fn.apply(this, allArgs)
+      : currying(fn, ...allArgs);
   };
 }
 

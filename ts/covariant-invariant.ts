@@ -10,12 +10,12 @@ interface B {
   gender: string;
 }
 
-let a: A = {
+let aa: A = {
   name: "a",
   age: 1
 };
 
-let b: B = {
+let bb: B = {
   name: "b",
   age: 2,
   gender: "male"

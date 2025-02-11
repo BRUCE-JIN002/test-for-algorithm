@@ -9,7 +9,7 @@ interface Obj {
   add: (this: Obj, num: number) => number;
 }
 
-const obj: Obj = {
+const obj1: Obj = {
   user: [1, 2, 3],
   add(this: Obj, num: number) {
     this.user.push(num);

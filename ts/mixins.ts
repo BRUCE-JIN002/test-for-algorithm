@@ -1,16 +1,16 @@
-interface A {
+interface AA {
   age: number;
 }
 
-interface B {
+interface BB {
   emial: string;
 }
 
-const A: A = {
+const A: AA = {
   age: 19
 };
 
-const B: B = {
+const B: BB = {
   emial: "123456789@qq.com"
 };
 

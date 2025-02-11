@@ -4,7 +4,7 @@ let str: String = "hello";
 let bol: Boolean = true;
 let date: Date = new Date();
 let arr: Array<number> = [1, 2, 3];
-let obj: Object = { name: "Tom", age: 18 };
+let object: Object = { name: "Tom", age: 18 };
 let fun: Function = function () {};
 let reg: RegExp = new RegExp(/abc/);
 
