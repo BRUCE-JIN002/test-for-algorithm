@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>水波纹效果</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+      }
+
+      .water-container {
+        width: 300px;
+        height: 300px;
+        position: relative;
+        background-color: #30280de6;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .ripple {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 0;
+        height: 0;
+        background: radial-gradient(
+          circle,
+          transparent 0%,
+          transparent 25%,
+          #30280de6 35%,
+          #30280de6 50%,
+          rgba(209, 190, 151, 0.9) 60%,
+          rgba(209, 190, 151, 0.6) 70%,
+          rgba(209, 190, 151, 0.3) 80%,
+          rgba(209, 190, 151, 0.1) 90%,
+          rgba(209, 190, 151, 0.05) 95%,
+          rgba(209, 190, 151, 0) 100%
+        );
+        border-radius: 50%;
+        opacity: 0;
+        mix-blend-mode: screen;
+      }
+
+      .ripple.animate {
+        animation: ripple 2.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      @keyframes ripple {
+        0% {
+          width: 0;
+          height: 0;
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(0);
+        }
+        50% {
+          opacity: 0.7;
+        }
+        100% {
+          width: 300px;
+          height: 300px;
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(2.5);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="water-container">
+      <div class="ripple"></div>
+      <div class="ripple"></div>
+      <div class="ripple"></div>
+    </div>
+    <script>
+      const container = document.querySelector(".water-container");
+      const ripples = document.querySelectorAll(".ripple");
+      let currentRipple = 0;
+
+      container.addEventListener("click", () => {
+        const ripple = ripples[currentRipple];
+        ripple.classList.remove("animate");
+        void ripple.offsetWidth; // 触发重排以重置动画
+        ripple.classList.add("animate");
+
+        currentRipple = (currentRipple + 1) % ripples.length;
+      });
+
+      ripples.forEach((ripple) => {
+        ripple.addEventListener("animationend", () => {
+          ripple.classList.remove("animate");
+        });
+      });
+    </script>
+  </body>
+</html>
