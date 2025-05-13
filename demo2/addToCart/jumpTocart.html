@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .container {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      background-color: #fff;
+    }
+
+    .target {
+      width: 100px;
+      height: 100px;
+      background-color: #f00;
+      position: absolute;
+      bottom: 50px;
+      right: 50px;
+    }
+
+    .source {
+      width: 100px;
+      height: 100px;
+      background-color: #0f0;
+      position: absolute;
+      left: 50px;
+      top: 50px;
+      cursor: pointer;
+    }
+    .pump {
+      animation: pump 0.3s;
+    }
+
+    @keyframes pump {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .add-to-car {
+      position: fixed;
+      color: #fff;
+      font-size: 23rem;
+      line-height: 40rem;
+      text-align: center;
+      margin-left: 6rem;
+      margin-top: 0rem;
+      left: 0;
+      top: 0;
+      transition: 0.8s linear;
+
+      .iconfont {
+        width: 3rem;
+        height: 3rem;
+        background: #4a90e1;
+        border-radius: 50%;
+        display: block;
+        transition: 0.8s cubic-bezier(1, 0, 1, 1);
+      }
+    }
+  </style>
+  <script>
+    function jumpToCart() {
+      // 找到对应商品的加号
+      var btnAdd = document.getElementById("source");
+      var rect = btnAdd.getBoundingClientRect();
+      var start = {
+        x: rect.left,
+        y: rect.top
+      };
+      // 找到购物车的位置
+      var target = document.getElementById("target");
+      var carRect = target.getBoundingClientRect();
+
+      var jumpTarget = {
+        x: carRect.left - carRect.width / 2 - 24,
+        y: carRect.top - carRect.height / 2
+      };
+      // 跳吧
+      var div = document.createElement("div");
+      div.className = "add-to-car";
+      var i = document.createElement("i");
+      i.className = "iconfont";
+      // 设置初始位置
+      div.style.transform = `translateX(${start.x}px)`;
+      i.style.transform = `translateY(${start.y}px)`;
+      div.appendChild(i);
+      document.body.appendChild(div);
+      // 强行渲染
+      div.clientWidth;
+
+      // 设置结束位置
+      div.style.transform = `translateX(${jumpTarget.x}px)`;
+      i.style.transform = `translateY(${jumpTarget.y}px)`;
+      div.addEventListener(
+        "transitionend",
+        function () {
+          div.remove();
+          // 给 target 添加 pump 动画
+          var target = document.getElementById("target");
+          target.classList.add("pump");
+          // 动画结束后移除 pump 类，方便下次触发
+          target.addEventListener("animationend", function handler() {
+            target.classList.remove("pump");
+            target.removeEventListener("animationend", handler);
+          });
+        },
+        {
+          once: true // 事件仅触发一次
+        }
+      );
+    }
+  </script>
+  <body>
+    <div class="container">
+      <div class="source" id="source" onclick="jumpToCart()"></div>
+      <div class="target" id="target"></div>
+    </div>
+  </body>
+</html>

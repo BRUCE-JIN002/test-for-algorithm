@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Shared Worker 示例</title>
+  </head>
+  <body>
+    <h1>Shared Worker 测试</h1>
+    <input type="text" id="messageInput" placeholder="输入消息" />
+    <button onclick="sendMessage()">发送</button>
+    <p>接收到的消息: <span id="output"></span></p>
+
+    <script>
+      // 创建 Shared Worker
+      const worker = new SharedWorker("sharedWorker.js");
+
+      // 监听 Worker 的消息
+      worker.port.onmessage = function (e) {
+        document.getElementById("output").textContent = e.data;
+      };
+
+      // 启动通信
+      worker.port.start();
+
+      // 发送消息到 Worker
+      function sendMessage() {
+        const input = document.getElementById("messageInput").value;
+        worker.port.postMessage(input);
+      }
+    </script>
+  </body>
+</html>

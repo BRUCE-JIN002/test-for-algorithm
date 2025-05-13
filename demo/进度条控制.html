@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #counter {
+        font-size: 48px;
+        margin: 20px;
+      }
+      button {
+        padding: 12px 24px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="counter">0</div>
+    <button id="trigger">立即完成</button>
+
+    <script>
+      const counter = document.getElementById("counter");
+      const trigger = document.getElementById("trigger");
+      let value = 0;
+      let target = 99; // 初始目标值
+      let intervalId = null;
+
+      function animate() {
+        if (value < target) {
+          value++;
+          counter.textContent = value;
+        }
+
+        // 到达目标值时停止动画
+        if (value === target) {
+          clearInterval(intervalId);
+          intervalId = null;
+
+          // 自动到达99后激活按钮
+          if (target === 99) {
+            trigger.disabled = false;
+          }
+        }
+      }
+
+      // 启动初始动画
+      intervalId = setInterval(animate, 16);
+
+      // 按钮点击处理
+      trigger.addEventListener("click", () => {
+        if (target === 100) return;
+
+        target = 100; // 修改目标值为100
+        trigger.disabled = true;
+
+        // 如果动画已停止则重新启动
+        if (!intervalId) {
+          intervalId = setInterval(animate, 16);
+        }
+      });
+    </script>
+  </body>
+</html>
