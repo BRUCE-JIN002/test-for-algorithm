@@ -1,5 +1,14 @@
+// 定义输入对象的类型
+type InputObject = Record<string, any>;
+
+// 定义输出对象的类型（包含 count 属性）
+type OutputObject<T extends InputObject> = T & { count: number };
+
 //数组属性相同值数量统计（可用于计算表格合并值rowSpan）
-const calcRowSpan = (objArr, field) => {
+const calcRowSpan = <T extends InputObject>(
+  objArr: T[],
+  field: keyof T
+): OutputObject<T>[] => {
   //按指定属性排序
   const sortedArr = objArr.sort((a, b) => a[field] - b[field]);
 
@@ -13,10 +22,11 @@ const calcRowSpan = (objArr, field) => {
       step++;
     }
     for (let j = i; j < i + step; j++) {
-      sortedArr[j].count = j === i ? (step === 1 ? 0 : step) : 0;
+      (sortedArr[j] as OutputObject<T>).count =
+        j === i ? (step === 1 ? 0 : step) : 0;
     }
     i += step - 1;
   }
 
-  return sortedArr;
+  return sortedArr as OutputObject<T>[];
 };
